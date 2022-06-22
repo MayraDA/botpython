@@ -49,7 +49,6 @@ def messageHandler(update: Update, context: CallbackContext):
             # guardamos temperatura que se encuentra en main
             temperature = y["temp"]
             temperature = round(temperature - 273.15,2)
-            print (temperature)
             
             # guardamos humedad que se encuentra en main
             humidity = y["humidity"]
@@ -64,7 +63,7 @@ def messageHandler(update: Update, context: CallbackContext):
             context.bot.send_message(chat_id=update.effective_chat.id, text="Estado = " + str(description))
             context.bot.send_message(chat_id=update.effective_chat.id, text="Humedad = " + str(humidity) + " %")      
         else:
-            print("Ciudad no encontrada")
+            context.bot.send_message(chat_id=update.effective_chat.id, text="Ciudad no encontrada")
         city = False
 
 def queryHandler(update: Update, context: CallbackContext):
